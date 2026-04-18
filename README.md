@@ -17,22 +17,22 @@ Sistema de gestión de ventas para la empresa ZeroxMotors, desarrollado como pro
 
 ## 📁 Estructura del proyecto
 
-zeroxmotors/
-├── backend/
-│   ├── config/         # Conexión a base de datos
-│   ├── controllers/    # Lógica de negocio
-│   ├── models/         # Queries SQL
-│   ├── routes/         # Endpoints REST
-│   ├── middleware/     # Manejo de errores
-│   └── index.js        # Entrada del servidor
-│
-├── frontend/
-│   └── src/
-│       ├── pages/      # Vistas principales
-│       ├── components/ # Componentes reutilizables
-│       ├── services/   # Llamadas a la API
-│       └── context/    # Estado global
-
+    zeroxmotors/
+    ├── backend/
+    │   ├── config/         # Conexión a base de datos
+    │   ├── controllers/    # Lógica de negocio
+    │   ├── models/         # Queries SQL
+    │   ├── routes/         # Endpoints REST
+    │   ├── middleware/     # Manejo de errores
+    │   └── index.js        # Entrada del servidor
+    │
+    ├── frontend/
+    │   └── src/
+    │       ├── pages/      # Vistas principales
+    │       ├── components/ # Componentes reutilizables
+    │       ├── services/   # Llamadas a la API
+    │       └── context/    # Estado global
+    
 ---
 
 ## ⚙️ Instalación y configuración
