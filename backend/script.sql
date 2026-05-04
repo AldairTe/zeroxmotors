@@ -13,6 +13,17 @@ CREATE TABLE clientes (
   fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  rol ENUM('administrador','vendedor','almacenero','repartidor') DEFAULT 'vendedor',
+  activo TINYINT(1) DEFAULT 1,
+  fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE productos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
