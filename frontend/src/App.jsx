@@ -9,6 +9,7 @@ import Productos from './pages/Productos';
 import Ventas from './pages/Ventas';
 import Cotizaciones from './pages/Cotizaciones';
 import Reportes from './pages/Reportes';
+import Almacen from './pages/Almacen';
 
 export default function App() {
   return (
@@ -46,6 +47,11 @@ export default function App() {
           <Route path="/reportes" element={
             <PrivateRoute roles={['administrador']}>
               <Layout><Reportes /></Layout>
+            </PrivateRoute>
+          } />
+          <Route path="/almacen" element={
+            <PrivateRoute roles={['administrador', 'almacenero']}>
+              <Layout><Almacen /></Layout>
             </PrivateRoute>
           } />
         </Routes>

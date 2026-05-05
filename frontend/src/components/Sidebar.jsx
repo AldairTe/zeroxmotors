@@ -8,6 +8,7 @@ const links = [
   { path: '/ventas', label: 'Ventas' },
   { path: '/cotizaciones', label: 'Cotizaciones' },
   { path: '/reportes', label: 'Reportes' },
+  { path: '/almacen', label: 'Almacén' },
 ];
 
 function Sidebar() {

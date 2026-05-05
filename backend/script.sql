@@ -86,6 +86,18 @@ CREATE TABLE movimientos_stock (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
+CREATE TABLE lotes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tipo ENUM('entrada', 'salida') NOT NULL,
+  proveedor VARCHAR(100),
+  motivo VARCHAR(200),
+  usuario_id INT,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+ALTER TABLE movimientos_stock ADD COLUMN lote_id INT NULL;
+ALTER TABLE movimientos_stock ADD FOREIGN KEY (lote_id) REFERENCES lotes(id);
 
 
 USE zeroxmotors;
