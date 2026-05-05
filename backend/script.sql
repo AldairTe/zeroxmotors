@@ -74,6 +74,18 @@ CREATE TABLE detalle_cotizaciones (
   FOREIGN KEY (producto_id) REFERENCES productos(id)
 );
 
+CREATE TABLE movimientos_stock (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  producto_id INT NOT NULL,
+  tipo ENUM('entrada', 'salida') NOT NULL,
+  cantidad INT NOT NULL,
+  motivo VARCHAR(200),
+  usuario_id INT,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (producto_id) REFERENCES productos(id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
 
 
 USE zeroxmotors;
