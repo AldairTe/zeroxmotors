@@ -11,6 +11,7 @@ const ventaService = {
   create: (data) => axios.post(BASE_URL, data, { headers: headers() }),
   update: (id, data) => axios.put(`${BASE_URL}/${id}`, data, { headers: headers() }),
   delete: (id) => axios.delete(`${BASE_URL}/${id}`, { headers: headers() }),
+  getComprobante: (id) => axios.get(`${BASE_URL}/${id}/comprobante`, { headers: headers() }),
 };
 
 export default ventaService;

@@ -25,11 +25,25 @@ const VentaModel = {
     const conn = await db.getConnection();
     try {
       await conn.beginTransaction();
+
+      // Validar stock antes de procesar
+      for (const item of data.productos) {
+        const [rows] = await conn.query(
+          'SELECT stock, nombre FROM productos WHERE id = ?',
+          [item.producto_id]
+        );
+        if (rows.length === 0) throw new Error(`Producto no encontrado`);
+        if (rows[0].stock < item.cantidad) {
+          throw new Error(`Stock insuficiente para "${rows[0].nombre}". Disponible: ${rows[0].stock}`);
+        }
+      }
+
       const [result] = await conn.query(
         'INSERT INTO ventas (cliente_id, total, estado, fecha) VALUES (?, ?, ?, NOW())',
         [data.cliente_id, data.total, data.estado || 'pendiente']
       );
       const venta_id = result.insertId;
+
       for (const item of data.productos) {
         await conn.query(
           'INSERT INTO detalle_ventas (venta_id, producto_id, cantidad, precio_unitario) VALUES (?, ?, ?, ?)',
@@ -40,6 +54,7 @@ const VentaModel = {
           [item.cantidad, item.producto_id]
         );
       }
+
       await conn.commit();
       return [{ insertId: venta_id }];
     } catch (error) {
