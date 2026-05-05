@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Clientes from './pages/Clientes';
@@ -18,22 +19,34 @@ export default function App() {
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
           <Route path="/dashboard" element={
-            <PrivateRoute><Dashboard /></PrivateRoute>
+            <PrivateRoute>
+              <Layout><Dashboard /></Layout>
+            </PrivateRoute>
           } />
           <Route path="/clientes" element={
-            <PrivateRoute roles={['administrador', 'vendedor']}><Clientes /></PrivateRoute>
+            <PrivateRoute roles={['administrador', 'vendedor']}>
+              <Layout><Clientes /></Layout>
+            </PrivateRoute>
           } />
           <Route path="/productos" element={
-            <PrivateRoute roles={['administrador', 'almacenero']}><Productos /></PrivateRoute>
+            <PrivateRoute roles={['administrador', 'almacenero']}>
+              <Layout><Productos /></Layout>
+            </PrivateRoute>
           } />
           <Route path="/ventas" element={
-            <PrivateRoute roles={['administrador', 'vendedor']}><Ventas /></PrivateRoute>
+            <PrivateRoute roles={['administrador', 'vendedor']}>
+              <Layout><Ventas /></Layout>
+            </PrivateRoute>
           } />
           <Route path="/cotizaciones" element={
-            <PrivateRoute roles={['administrador', 'vendedor']}><Cotizaciones /></PrivateRoute>
+            <PrivateRoute roles={['administrador', 'vendedor']}>
+              <Layout><Cotizaciones /></Layout>
+            </PrivateRoute>
           } />
           <Route path="/reportes" element={
-            <PrivateRoute roles={['administrador']}><Reportes /></PrivateRoute>
+            <PrivateRoute roles={['administrador']}>
+              <Layout><Reportes /></Layout>
+            </PrivateRoute>
           } />
         </Routes>
       </BrowserRouter>
