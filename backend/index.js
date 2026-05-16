@@ -4,7 +4,10 @@ require('dotenv').config();
 const { verifyToken } = require('./middleware/auth');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://zeroxmotors.vercel.app',
+  credentials: true
+}));
 app.use(express.json());
 
 // Ruta pública
